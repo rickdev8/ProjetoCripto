@@ -1,0 +1,102 @@
+/* Navbar.css */
+
+/* Estilo geral da navbar */
+.navbar {
+    width: 100%;
+    background-color: black;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+}
+
+/* Container principal */
+.navbar-container {
+    max-width: 100%;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 24px;
+}
+
+/* Estilo do logo */
+.logo img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Menu de navegação */
+.nav-menu {
+    font-weight: bold;
+    display: flex;
+    gap: 60px;
+    font-size: 16px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-menu a:hover {
+    color: #3b82f6; /* Azul */
+}
+
+/* Botões */
+.buttons-navbar {
+    display: flex;
+    gap: 16px;
+}
+
+.btn {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 25px;
+    border: 1px solid #08ce39;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #12ff0aad;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #19b83b;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #19b83b;
+}
+
+.btn-secondary:hover {
+    background-color: #19b83b;
+    color: white;
+}
+
+/* Ícone do menu para mobile */
+.menu-icon {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}

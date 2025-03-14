@@ -1,0 +1,148 @@
+/* Garantir que o HTML e o BODY ocupem 100% da altura */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Garante que o #root ocupa 100% da altura */
+#root {
+  height: 100%;
+}
+
+/* A .form-container ocupa 100% da altura e fica fixa na lateral direita */
+.form-container-cad {
+  position: fixed; /* Fixa na tela */
+  right: 0; /* Cola na direita */
+  top: 0; /* Cola no topo */
+  width: 50vw; /* 50% da largura da tela */
+  height: 100vh; /* 100% da altura da tela */
+  background-color: #ffffff;
+  color: rgb(42, 231, 105);
+  padding: 20px;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3); /* Sombra na esquerda */
+}
+
+.form-cadastro{
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  width: 610px;
+  height: 800px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #020202; /* Verde */
+}
+
+/* Estilo do Formulário */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos dos Grupos de Entrada */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.title{
+  flex-direction: column;
+  display: flex;
+  gap:10px;
+}
+
+.title h2{
+  font-weight: bold;
+  font-family: 'Poppins';
+  color: rgb(41, 42, 53);
+  font-size: 20px;
+}
+
+.buttons{
+  height: 100px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title p{
+  font-weight: bold;
+  color: #637381;
+  font-size: 13px;
+
+}
+
+
+.container-img{
+  width: 100%;
+}
+
+.container-img img{
+  width: 966px;
+  height: auto;
+  display: flex;
+  object-fit: cover;
+}
+
+.form-button-login {
+  background-color: #25B660;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+.form-button-voltar {
+  background-color: #ffffff;
+  color: #25B660;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.form-button-voltar:hover{
+  background-color: #11ff7021;
+}
+
+.form-button-login:hover{
+  background-color: #1d8346;
+}
+
+.form-button:hover {
+  background-color: #105806; /* Verde escuro */
+}
+
+.container-termos{
+  margin: 30px auto;
+  text-align: center;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-termos p {
+  font-size: 14px;
+  color: #414040;
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 50px white inset !important; /* Ajusta a cor de fundo */
+  -webkit-text-fill-color: #000 !important; /* Ajusta a cor do texto */
+}
