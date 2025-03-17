@@ -1,4 +1,6 @@
 .component-main{
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     height: 160px;
     border-radius: 10px;
@@ -17,4 +19,15 @@
     font-weight: bold;
     margin-top: 20px;
     font-size: 34px;
+}
+
+.component-price{
+    flex-direction: column;
+    display: flex;
+}
+
+.variation {
+    align-items: center;
+    display: flex;
+    gap: 5px;
 }

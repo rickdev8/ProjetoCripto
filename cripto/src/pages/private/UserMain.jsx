@@ -5,23 +5,31 @@ import "./UserMain.css";
 import { fetchDados2, ValueChart } from "../../utils/ValueChart";
 import PricesComponent from "../../components/shared/PricesComponent";
 import BotaoMoedas from "../../components/shared/BotaoMoedas";
+import { AiOutlineRise, AiOutlineFall  } from "react-icons/ai"
+
 
 const UserMain = () => {
   const [dadosInfo, setDadosInfo] = useState({
     maiorpreço: 0,
     menorpreço: 0,
     preçoatual: 0,
+    variacao1haumento: 0.00,
+    variacao1hdiminui: 0.00,
+    variacaohoraatual: 0,
+    iconaumento: <AiOutlineRise color="green" />,
+    icondiminui: <AiOutlineFall />
   });
 
   const [dados, setDados] = useState({
-    moeda: "bitcoin",
-    tempo: "h1",
+    moedaAPI1: "bitcoin",
+    moedaAPI2: "BTC",
+    tempoAPI1: "h1",
   });
 
   const HadleData = (e) => {
     setDados({
       ...dados,
-      tempo: e.target.name,
+      tempoAPI1: e.target.name,
       param: e.target.id,
     });
   };
@@ -29,23 +37,36 @@ const UserMain = () => {
   const HadleMoeda = (e) => {
     setDados({
       ...dados,
-      moeda: e.target.value,
+      moedaAPI1: e.target.value,
+      moedaAPI2: e.target.selectedOptions[0].getAttribute("data-name"),
     });
   };
 
-  const Dadosanaliticos = async () => {
-    const response = await fetchDados2();
-    console.log(response);
-    setDadosInfo({
-      maiorpreço: response.CURRENT_DAY_HIGH,
-      menorpreço: response.CURRENT_DAY_LOW,
-      preçoatual: response.VALUE,
-    });
-  };
+  useEffect(() => {
+    const Dadosanaliticos = async () => {
+      const response = await fetchDados2(dados.moedaAPI2);
+      let variacaopositiva = 0.00;
+      let vatiacaonegativa = 0.00;
+
+      if (response.CURRENT_HOUR_CHANGE_PERCENTAGE < 0) {
+        vatiacaonegativa = response.CURRENT_HOUR_CHANGE_PERCENTAGE; 
+      } else {
+        variacaopositiva = response.CURRENT_HOUR_CHANGE_PERCENTAGE; 
+      }
   
-  Dadosanaliticos()
-  setTimeout(Dadosanaliticos, 10000);
-
+      setDadosInfo({
+        maiorpreço: response.CURRENT_DAY_HIGH,
+        menorpreço: response.CURRENT_DAY_LOW,
+        preçoatual: response.VALUE,
+        variacao1haumento: variacaopositiva,
+        variacao1hdiminui: vatiacaonegativa,
+        variacaohoraatual: response.CURRENT_HOUR_CHANGE
+      });
+    };
+  
+    Dadosanaliticos();
+  }, [dados.moedaAPI2]);
+  
   return (
     <>
       <div className="container-main">
@@ -64,14 +85,19 @@ const UserMain = () => {
             <PricesComponent
               price={dadosInfo.preçoatual.toFixed(2)}
               title="Current Value"
+              variacao={dadosInfo.variacaohoraatual.toFixed(2)}
             />
             <PricesComponent
               price={dadosInfo.menorpreço.toFixed(2)}
+              variacao={dadosInfo.variacao1hdiminui.toFixed(2)}
+              icon={dadosInfo.icondiminui}
               title="Lowest Price"
             />
             <PricesComponent
               price={dadosInfo.maiorpreço.toFixed(2)}
               title="Highest Price"
+              variacao={dadosInfo.variacao1haumento.toFixed(2)}
+              icon={dadosInfo.iconaumento}
             />
           </div>
           <div className="container-chart">
