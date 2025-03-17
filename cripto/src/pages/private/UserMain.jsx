@@ -2,22 +2,52 @@ import React, { useEffect, useState } from "react";
 import Menu from "../../components/shared/Menu";
 import Chart from "./LineChart";
 import "./UserMain.css";
-import { fetchDados2, ValueChart } from "../../utils/ValueChart";
+import { fetchDados2, fetchDados3, ValueChart } from "../../utils/ValueChart";
 import PricesComponent from "../../components/shared/PricesComponent";
 import BotaoMoedas from "../../components/shared/BotaoMoedas";
-import { AiOutlineRise, AiOutlineFall  } from "react-icons/ai"
+import { AiOutlineRise, AiOutlineFall } from "react-icons/ai";
+import Moedaindividual from "../../components/shared/Moedaindividual";
 
+import solana from "../../../public/imgcriptos/307aaac34a484ecc918c3c2804618bfc.jpg";
+import bitcoin from "../../../public/imgcriptos/Bitcoin.svg.png";
+import ethereum from "../../../public/imgcriptos/pngtree-vector-illustration-of-crytocurrency-ethereum-png-image_3314668.jpg";
 
 const UserMain = () => {
+
+  const styleDown = {
+    padding: "2px",  
+    fontWeight: "bold",  
+    width: "62px",
+    height: "20px",
+    fontSize: "10px",  
+    color: "rgb(204, 15, 15)",
+    borderRadius: "20px",  
+    backgroundColor: "rgba(80, 9, 9, 0.288)" 
+  };
+
+  const styleHigh = {
+    padding: "2px",
+    fontWeight: "bold",
+    width: "62px",
+    height: "20px",
+    fontSize: "10px",
+    color: "rgb(15, 204, 31)",
+    borderRadius: "20px",
+    backgroundColor: "rgba(0, 128, 0, 0.288)"
+  };
+
+  const [dadosTabela, setDadosTabela] = useState([]);
+
   const [dadosInfo, setDadosInfo] = useState({
     maiorpreço: 0,
     menorpreço: 0,
     preçoatual: 0,
-    variacao1haumento: 0.00,
-    variacao1hdiminui: 0.00,
+    variacao1haumento: 0.0,
+    variacao1hdiminui: 0.0,
     variacaohoraatual: 0,
     iconaumento: <AiOutlineRise color="green" />,
-    icondiminui: <AiOutlineFall />
+    icondiminui: <AiOutlineFall color="red" />,
+    iconehoratual: "",
   });
 
   const [dados, setDados] = useState({
@@ -45,28 +75,50 @@ const UserMain = () => {
   useEffect(() => {
     const Dadosanaliticos = async () => {
       const response = await fetchDados2(dados.moedaAPI2);
-      let variacaopositiva = 0.00;
-      let vatiacaonegativa = 0.00;
 
-      if (response.CURRENT_HOUR_CHANGE_PERCENTAGE < 0) {
-        vatiacaonegativa = response.CURRENT_HOUR_CHANGE_PERCENTAGE; 
-      } else {
-        variacaopositiva = response.CURRENT_HOUR_CHANGE_PERCENTAGE; 
-      }
-  
       setDadosInfo({
         maiorpreço: response.CURRENT_DAY_HIGH,
         menorpreço: response.CURRENT_DAY_LOW,
         preçoatual: response.VALUE,
-        variacao1haumento: variacaopositiva,
-        variacao1hdiminui: vatiacaonegativa,
-        variacaohoraatual: response.CURRENT_HOUR_CHANGE
+        variacao1haumento:
+          response.CURRENT_HOUR_CHANGE_PERCENTAGE > 0
+            ? response.CURRENT_HOUR_CHANGE_PERCENTAGE
+            : 0.0,
+        variacao1hdiminui:
+          response.CURRENT_HOUR_CHANGE_PERCENTAGE < 0
+            ? response.CURRENT_HOUR_CHANGE_PERCENTAGE
+            : 0.0,
+        variacaohoraatual: response.CURRENT_HOUR_CHANGE,
+        iconaumento: dadosInfo.iconaumento,
+        icondiminui: dadosInfo.icondiminui,
+        iconehoratual:
+          response.CURRENT_HOUR_CHANGE <= 0 ? (
+            <AiOutlineFall color="red" />
+          ) : (
+            <AiOutlineRise color="green" />
+          ),
       });
     };
-  
     Dadosanaliticos();
   }, [dados.moedaAPI2]);
-  
+
+  useEffect(() => {
+    const lista = [];
+    const DadosAnaliticosTabela = async () => {
+      const response = await fetchDados3();
+      response.map((item) => {
+        lista.push(item);
+      });
+    };
+
+    setDadosTabela(lista);
+
+    dadosTabela.map((item) => {
+      console.log(item.value.data.Data[item.name])
+    })
+    DadosAnaliticosTabela();
+  }, [])
+
   return (
     <>
       <div className="container-main">
@@ -77,7 +129,7 @@ const UserMain = () => {
           <div className="content-title">
             <div className="text">
               <h2>Overview</h2>
-              <p>Aug 13, 2023 - Aug 18, 2023</p>
+              <p>Cryptocurrency Data</p>
             </div>
             <BotaoMoedas onChange={HadleMoeda} />
           </div>
@@ -85,19 +137,23 @@ const UserMain = () => {
             <PricesComponent
               price={dadosInfo.preçoatual.toFixed(2)}
               title="Current Value"
-              variacao={dadosInfo.variacaohoraatual.toFixed(2)}
+              variacao={dadosInfo.variacaohoraatual.toFixed(3) + "$"}
+              icone={dadosInfo.iconehoratual}
+              title2="Current"
             />
             <PricesComponent
               price={dadosInfo.menorpreço.toFixed(2)}
-              variacao={dadosInfo.variacao1hdiminui.toFixed(2)}
-              icon={dadosInfo.icondiminui}
+              variacao={dadosInfo.variacao1hdiminui.toFixed(2) + "%"}
+              icone={dadosInfo.icondiminui}
               title="Lowest Price"
+              title2="1 Hour"
             />
             <PricesComponent
               price={dadosInfo.maiorpreço.toFixed(2)}
               title="Highest Price"
-              variacao={dadosInfo.variacao1haumento.toFixed(2)}
-              icon={dadosInfo.iconaumento}
+              variacao={"+" + dadosInfo.variacao1haumento.toFixed(2) + "%"}
+              icone={dadosInfo.iconaumento}
+              title2="1 Hour"
             />
           </div>
           <div className="container-chart">
@@ -124,6 +180,46 @@ const UserMain = () => {
             <div className="Chart-main">
               <Chart dados={ValueChart(dados)} />
             </div>
+          </div>
+          <div className="container-infos3">
+            <div className="titles-table">
+              <div className="child-item">
+                <p>Vault</p>
+              </div>
+              <div className="child-item">
+                <p>First Month</p>
+              </div>
+              <div className="child-item">
+                <p>Percentage</p>
+              </div>
+              <div className="child-item">
+                <p>Percentage Value</p>
+              </div>
+              <div className="child-item">
+                <p>State</p>
+              </div>
+              <div className="child-item">
+                <p>Date</p>
+              </div>
+              <div className="child-item">
+                <p>Statitics</p>
+              </div>
+            </div>
+            {dadosTabela.map((item) => {
+              return (
+                <Moedaindividual name={item.name} 
+                value={item.value.data.Data[item.name].VALUE.toFixed(2)}
+                pricepassado={item.value.data.Data[item.name].CURRENT_MONTH_OPEN.toFixed(2)}
+                porcentagem={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE.toFixed(2)}
+                valoratual={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE.toFixed(2)}
+                state= {item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? 'FALL' : 'INCREASE'}
+                style={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? styleDown : styleHigh}
+                data='Current Month'
+                icone={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? <AiOutlineFall color="red" />: <AiOutlineRise color="green" />}
+                />
+              )
+            })}
+             
           </div>
         </div>
       </div>

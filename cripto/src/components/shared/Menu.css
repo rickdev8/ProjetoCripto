@@ -1,6 +1,6 @@
 /* From Uiverse.io by shadowmurphy */ 
 .inputmenu {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   width: 250px;

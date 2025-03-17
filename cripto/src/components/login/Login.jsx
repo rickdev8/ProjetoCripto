@@ -35,7 +35,7 @@ function Login() {
       <div className="form-container">
         <div className="form-cadastro">
           <div className="title">
-            <h2>Criar conta na Crypto</h2>
+            <h2>Logar na Crypto</h2>
             <p>
               Informe todos os dados solicitados abaixo, certifique-se de que
               todos os dados inseridos estejam corretos.

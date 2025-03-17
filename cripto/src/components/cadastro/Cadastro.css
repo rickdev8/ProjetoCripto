@@ -76,9 +76,7 @@ body {
   font-weight: bold;
   color: #637381;
   font-size: 13px;
-
 }
-
 
 .container-img{
   width: 100%;
@@ -125,7 +123,7 @@ body {
 }
 
 .form-button:hover {
-  background-color: #105806; /* Verde escuro */
+  background-color: #105806; 
 }
 
 .container-termos{
@@ -143,6 +141,6 @@ body {
 
 input:-webkit-autofill {
   background-color: transparent !important;
-  -webkit-box-shadow: 0 0 0 50px white inset !important; /* Ajusta a cor de fundo */
-  -webkit-text-fill-color: #000 !important; /* Ajusta a cor do texto */
+  -webkit-box-shadow: 0 0 0 50px white inset !important; 
+  -webkit-text-fill-color: #000 !important; 
 }

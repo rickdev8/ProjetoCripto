@@ -1,0 +1,62 @@
+.container-moedaind{
+    text-align: center;
+    font-family: 'Poppins';
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    border-bottom: 1px solid #d3d3d32d
+}
+
+
+.perfil-div{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    width: 120px;
+}
+
+.perfil-div-titles h4{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.perfil-div-titles p{
+    color: rgba(117, 117, 117, 0.705);
+    font-size: 12px;
+}
+
+.perfil-div p {
+    font-size: 15px;
+}
+
+
+.perfil-div-img{
+    width: 35px;
+}
+
+.perfil-div-titles{
+    width: 115px;
+}
+
+.perfil-div-start {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    width: 120px;
+}
+
+
+
+.perfil-div .state{
+    padding: 2px;
+    font-weight: bold;
+    width: 62px;
+    height: 20px;
+    font-size: 10px;
+    color: rgb(204, 15, 15);
+    border-radius: 20px;
+    background-color: rgba(80, 9, 9, 0.288);
+}
