@@ -4,7 +4,6 @@
 }
 
 .container-content{
-  margin-top: 80px;
   flex-direction: column;
   display: flex;
   width: 100vw;
@@ -35,7 +34,7 @@
   color: rgba(117, 117, 117, 0.705)
 }
 
-.container-content .botao{
+.container-content select{
   font-weight: bold;
   cursor: pointer;
   padding: 12px;
@@ -44,6 +43,16 @@
   border: 1px solid rgba(73, 73, 73, 0.596);
   border-radius: 5px;
   display: flex;
+}
+
+.container-content option{
+  background-color: black;
+  color: white;
+}
+
+.container-content option:hover{
+  background-color: black;
+  color: white;
 }
 
 .container-content .botao button{
@@ -65,7 +74,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 40px auto;
   border-radius: 10px;
   display: flex;
   width: 90%;
@@ -74,9 +83,14 @@
   border: 1px solid rgba(83, 75, 60, 0.212);
 }
 
-.container-content .botao:hover{
-  
+.container-prices{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
 }
+
+
 .titles-chart h2{
   margin-top: 15px;
   color: #FAFAFA;
@@ -105,4 +119,8 @@
 
 .titles-chart button:hover{
   background-color: rgba(255, 255, 255, 0.082);
+}
+
+.menu{
+  border-right: 1px solid rgba(73, 73, 73, 0.596);
 }

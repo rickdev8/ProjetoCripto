@@ -7,7 +7,7 @@ import ValidaDados from '../middlewares/HashMiddleware.js';
 
 const route = express.Router()
 
-route.get('/getUser/:email', ValidateInputs, User.getUser)
+route.get('/getUser/:email', ValidaDados, User.getUser)
 route.post('/postUser', ValidaDados, User.postUser)
 route.post('/getLogin', ValidateInputs, gerarToken, User.Login)
 route.post('/getLogin/autentic', ValidaToken, User.UserAutentic)

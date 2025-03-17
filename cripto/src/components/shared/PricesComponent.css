@@ -1,0 +1,20 @@
+.component-main{
+    padding: 20px;
+    height: 160px;
+    border-radius: 10px;
+    background-color: rgba(46, 44, 43, 0.096);
+    width: 32.3%;
+    border: 1px solid rgba(83, 75, 60, 0.212);
+}
+
+.component-main p{
+    font-family: 'Poppins';
+    color: rgba(104, 104, 104, 0.726);
+    font-size: 14px;
+}
+
+.component-main h2{
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 34px;
+}

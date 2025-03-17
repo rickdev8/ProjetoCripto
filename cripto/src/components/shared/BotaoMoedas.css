@@ -1,0 +1,22 @@
+.container-content select{
+    width: 200px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 15px;
+    background-color: transparent;
+    border: 1px solid rgba(73, 73, 73, 0.596);
+    border-radius: 5px;
+    display: flex;
+  }
+  
+  .container-content option{
+    background-color: black;
+    color: white;
+  }
+  
+  .container-content option:hover{
+    background-color: black;
+    color: white;
+  }
+  
