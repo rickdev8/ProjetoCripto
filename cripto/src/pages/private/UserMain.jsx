@@ -8,9 +8,6 @@ import BotaoMoedas from "../../components/shared/BotaoMoedas";
 import { AiOutlineRise, AiOutlineFall } from "react-icons/ai";
 import Moedaindividual from "../../components/shared/Moedaindividual";
 
-import solana from "../../../public/imgcriptos/307aaac34a484ecc918c3c2804618bfc.jpg";
-import bitcoin from "../../../public/imgcriptos/Bitcoin.svg.png";
-import ethereum from "../../../public/imgcriptos/pngtree-vector-illustration-of-crytocurrency-ethereum-png-image_3314668.jpg";
 
 const UserMain = () => {
 
@@ -103,15 +100,11 @@ const UserMain = () => {
   }, [dados.moedaAPI2]);
 
   useEffect(() => {
-    const lista = [];
     const DadosAnaliticosTabela = async () => {
       const response = await fetchDados3();
-      response.map((item) => {
-        lista.push(item);
-      });
+      setDadosTabela(response)
+      console.log(response)
     };
-
-    setDadosTabela(lista);
 
     dadosTabela.map((item) => {
       console.log(item.value.data.Data[item.name])
@@ -178,7 +171,7 @@ const UserMain = () => {
               </div>
             </div>
             <div className="Chart-main">
-              <Chart dados={ValueChart(dados)} />
+              <Chart dados={ValueChart(dados)} type={dados.param} />
             </div>
           </div>
           <div className="container-infos3">
@@ -208,18 +201,17 @@ const UserMain = () => {
             {dadosTabela.map((item) => {
               return (
                 <Moedaindividual name={item.name} 
-                value={item.value.data.Data[item.name].VALUE.toFixed(2)}
-                pricepassado={item.value.data.Data[item.name].CURRENT_MONTH_OPEN.toFixed(2)}
-                porcentagem={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE.toFixed(2)}
-                valoratual={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE.toFixed(2)}
-                state= {item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? 'FALL' : 'INCREASE'}
-                style={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? styleDown : styleHigh}
+                value={item.value.Data[item.name].VALUE.toFixed(2)}
+                pricepassado={item.value.Data[item.name].CURRENT_MONTH_OPEN.toFixed(2)}
+                porcentagem={item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE.toFixed(2)}
+                valoratual={item.value.Data[item.name].CURRENT_MONTH_CHANGE.toFixed(2)}
+                state= {item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? 'FALL' : 'INCREASE'}
+                style={item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? styleDown : styleHigh}
                 data='Current Month'
-                icone={item.value.data.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? <AiOutlineFall color="red" />: <AiOutlineRise color="green" />}
+                icone={item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? <AiOutlineFall color="red" />: <AiOutlineRise color="green" />}
                 />
               )
             })}
-             
           </div>
         </div>
       </div>

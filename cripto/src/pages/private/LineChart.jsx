@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CanvasJSReact from "@canvasjs/react-charts";
 import "./LineChart.css";
 
-
-
-
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-
-const Chart = ({dados}) => {
+const Chart = ({dados, type}) => {
+  console.log(dados)
 
   const options = {
 
     theme: "light2",
     animationEnabled: true,
-    zoomEnabled: true,
+    zoomEnabled: false,
     title: {
       fontColor: "#1c1c1c",
       fontSize: 24,
@@ -22,6 +19,7 @@ const Chart = ({dados}) => {
       fontWeight: "bold",
     },
     axisX: {
+      crosshair: { enable: true, snapToDataPoint: true },
       titleFontSize: 12,
       titleFontColor: "#333",
       lineColor: "transparent",
@@ -49,6 +47,11 @@ const Chart = ({dados}) => {
       },
     ],
   };
+
+  if(type == 'm12'){
+    options.axisX.interval= 1
+    options.axisX.intervalType = 'month'
+  }
 
   return (
     <div className="chart-container">
