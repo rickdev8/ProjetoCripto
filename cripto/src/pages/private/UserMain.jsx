@@ -208,7 +208,7 @@ const UserMain = () => {
                 state= {item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? 'FALL' : 'INCREASE'}
                 style={item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? styleDown : styleHigh}
                 data='Current Month'
-                icone={item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? <AiOutlineFall color="red" />: <AiOutlineRise color="green" />}
+                icone={item.value.Data[item.name].CURRENT_MONTH_CHANGE_PERCENTAGE < 0 ? <AiOutlineFall color="red" /> : <AiOutlineRise color="green" />}
                 />
               )
             })}
