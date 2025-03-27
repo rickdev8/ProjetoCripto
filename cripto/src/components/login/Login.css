@@ -47,7 +47,7 @@ body {
   flex-direction: column;
 }
 
-/* Estilos dos Grupos de Entrada */
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -65,12 +65,6 @@ body {
   font-size: 20px;
 }
 
-.buttons{
-  height: 100px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-}
 
 .title p{
   font-weight: bold;
@@ -90,42 +84,6 @@ body {
   object-fit: cover;
 }
 
-.form-button-login {
-  background-color: #25B660;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-}
-.form-button-voltar {
-  background-color: #ffffff;
-  color: #25B660;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-}
-
-.form-button-voltar:hover{
-  background-color: #11ff7021;
-}
-
-.form-button-login:hover{
-  background-color: #1d8346;
-}
-
-.form-button:hover {
-  background-color: #105806; /* Verde escuro */
-}
 
 .container-termos{
   margin: 30px auto;
@@ -139,3 +97,4 @@ body {
   font-size: 14px;
   color: #414040;
 }
+

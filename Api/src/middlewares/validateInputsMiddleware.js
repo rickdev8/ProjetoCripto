@@ -5,13 +5,14 @@ const prisma = new PrismaClient();
 
 async function ValidateInputs(req, res, next) {
     try {
-        const { email, password } = req.body;
+        const {email, password } = req.body;
 
         if(!email || !password){
-            return res.status(400)
+            return res.status(400).json({message: "Dados invalidos"})
         }
     
         const userVerified = await prisma.user.findUnique({ where: { email } });
+
         if (!userVerified) {
             console.log("Nao encontrado")
           return res.status(401).json({ message: "Usuário não encontrado" });
@@ -27,7 +28,7 @@ async function ValidateInputs(req, res, next) {
         console.error(erro)
         return res.status(500)
     }
-    
 }
+
 
 export default ValidateInputs

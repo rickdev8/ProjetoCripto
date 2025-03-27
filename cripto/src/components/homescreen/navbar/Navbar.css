@@ -2,6 +2,7 @@
 
 /* Estilo geral da navbar */
 .navbar {
+    height: 80px;
     width: 100%;
     background-color: black;
     color: white;

@@ -1,0 +1,66 @@
+.automations-main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.container-automations{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    font-family: "Poppins";
+    padding: 60px;
+}
+
+.title-automations{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.sub-container-main{
+    display: flex;
+    width: 300px;
+}
+
+.title-automations h1{
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.add-automation {
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: 150PX;
+    width: 300px;
+    margin-top: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.226);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.add-automation img{
+  width: 60px;
+  height: 60px;
+}
+
+.add-automation p{
+    color: rgba(255, 255, 255, 0.466);
+}
+
+.add-automation:hover{
+    transform: scale(1.04);
+}
+
+.container-notify{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    margin: -100px auto;
+}
+

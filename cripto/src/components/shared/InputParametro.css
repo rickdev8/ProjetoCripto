@@ -1,0 +1,24 @@
+.input-parametro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.input-parametro label {
+    font-size: 14px;
+    color: #333;
+}
+
+.input-parametro input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-parametro input:focus {
+    border-color: #007bff;
+}

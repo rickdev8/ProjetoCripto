@@ -8,23 +8,26 @@ import Homescreen from "./pages/homescreenpage/Homescreen";
 import Autor from "./pages/autorpage/Autor";
 import Login from "./components/login/Login";
 import UserMain from "./pages/private/UserMain";
+import Automations from "./pages/private/Automations/Automations";
+import Menu from "./components/shared/Menu";
 
 function Layout() {
   const location = useLocation();
 
-  // Rotas que não devem exibir a Navbar
-  const hideNavbarRoutes = ["/login", "/cadastro", "/main/:id"];
+  const hideNavbarRoutes = ["/login", "/cadastro", "/main/automations", "/main/:id/states"];
   const shouldShowNavbar = !hideNavbarRoutes.some((e) => matchPath(e, location.pathname))
-  console.log(shouldShowNavbar)
 
-  console.log(matchPath('/main/:id', location.pathname))
+  const hideMenuRoutes = ["/login", "/","/main/:id/states", "/main/automations", "/cadastro"]
+  const shouldShowMenu = !hideMenuRoutes.some((e) => matchPath(e, location.pathname))
 
   return (
     <>
       {shouldShowNavbar && <Navbar />}
+      {shouldShowMenu && <Menu />}
       <Routes>
+        <Route path="/main/automations" element={<Automations />} />
         <Route path="/" element={<Homescreen />} />
-        <Route path="/main/:id" element={<UserMain />} />
+        <Route path="/main/:id/states" element={<UserMain />} />
         <Route path="/documentation" element={<Documentation />} />
         <Route path="/autor" element={<Autor />} />
         <Route path="/login" element={<Login />} />

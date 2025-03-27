@@ -21,6 +21,9 @@ const routes = (app) => {
   }));
   app.use(express.json(), User);
   app.use(cookieParser())
+ 
 };
+
+
 
 export default routes;

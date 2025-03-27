@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Cadastro.css";
 import Input from "../shared/Input";
 import { Link } from "react-router-dom";
-import { getUser, postUser } from "../../services/Rotas";
+import {  postUser } from "../../services/Rotas";
 import { ValidaDados, VerificaSenha } from "../../utils/functions";
+import ButtonsForm from "../shared/buttonsForm";
 
 function Cadastro() {
   const [verificaSenha, setVerificasenha] = useState('')
@@ -82,9 +83,7 @@ function Cadastro() {
               placeholder="Repetir Senha *"
             />
             <div className="buttons">
-              <button type="submit" className="form-button-login">
-                Cadastrar
-              </button>
+              <ButtonsForm title={"Cadastrar"} />
               <Link to="/">
                 <button type="button" className="form-button-voltar">
                   Voltar

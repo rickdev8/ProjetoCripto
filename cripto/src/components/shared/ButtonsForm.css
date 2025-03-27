@@ -1,0 +1,76 @@
+.form-button-login {
+    background-color: #25B660;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  .form-button-voltar {
+    background-color: #ffffff;
+    color: #25B660;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+  }
+  
+  .form-button-voltar:hover{
+    background-color: #11ff7021;
+  }
+  
+  .form-button-login:hover{
+    background-color: #1d8346;
+  }
+  
+  .form-button:hover {
+    background-color: #105806; 
+  }
+  
+.loading{
+    margin: 0 auto;
+    width: 1.450em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+   }
+   
+   circle {
+    fill: none;
+    stroke: hsl(0, 0%, 100%);
+    stroke-width: 4;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
+   }
+   
+   @keyframes rotate4 {
+    100% {
+     transform: rotate(360deg);
+    }
+   }
+   
+   @keyframes dash4 {
+    0% {
+     stroke-dasharray: 1, 200;
+     stroke-dashoffset: 0;
+    }
+   
+    50% {
+     stroke-dasharray: 90, 200;
+     stroke-dashoffset: -35px;
+    }
+   
+    100% {
+     stroke-dashoffset: -125px;
+    }
+   }
+   

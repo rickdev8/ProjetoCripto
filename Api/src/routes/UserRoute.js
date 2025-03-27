@@ -3,7 +3,8 @@ import User from "../controllers/UserController.js";
 import gerarToken from '../services/jwtServices.js';
 import ValidateInputs from '../middlewares/validateInputsMiddleware.js';
 import ValidaToken from '../middlewares/validaToken.js';
-import ValidaDados from '../middlewares/HashMiddleware.js';
+import { ValidaDados } from '../../../cripto/src/utils/functions.js';
+
 
 const route = express.Router()
 

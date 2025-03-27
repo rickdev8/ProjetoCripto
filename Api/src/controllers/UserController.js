@@ -22,7 +22,10 @@ class User {
     }
   }
 
-  static async Login(req, res) {}
+  static async Login(req, res) {
+    res.status(200)
+  }
+  
   static async postUser(req, res) {
     const { name, email, age, password } = req.body;
 
