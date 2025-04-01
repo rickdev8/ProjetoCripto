@@ -18,7 +18,6 @@ async function gerarToken(req, res, next) {
       { expiresIn: "1h" }
     );
 
-    console.log(token)
     res.cookie("token", token, { httpOnly: true, secure: true });
     
     next()

@@ -1,24 +1,40 @@
 import "./BotaoRadioData.css";
-import React from "react";
+import React, { useState } from "react";
 
-const BotaoRadioData = () => {
+const BotaoRadioData = ({onChange}) => {
+  const [dataValue, setDataValue] = useState("parametro");
+
+  const ChangeRadio = (e) => {
+    setDataValue(e.target.value);
+    onChange(e.target.value)
+  };
+
   return (
-    <div class="radio-input">
-      <label class="label">
-      <p class="text">Data</p>
+    <div className="radio-input">
+      <label className="label">
+        <p className="text">Data</p>
         <input
           type="radio"
-          id="value-1"
-          name="value-radio"
-          value="value-1"
+          id="data"
+          name="tipo"
+          value="data"
+          checked={dataValue === "data"}
+          onChange={ChangeRadio}
         />
       </label>
-      <label class="label">
-      <p class="text">Parâmetro</p>
-        <input type="radio" id="value-2" name="value-radio" value="value-2" />
+      <label className="label">
+        <p className="text">Parâmetro</p>
+        <input
+          type="radio"
+          id="parametro"
+          name="tipo"
+          value="parametro"
+          checked={dataValue === "parametro"}
+          onChange={ChangeRadio}
+        />
       </label>
-      </div>
-  )
+    </div>
+  );
 };
 
 export default BotaoRadioData;

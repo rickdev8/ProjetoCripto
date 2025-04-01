@@ -23,7 +23,7 @@ class User {
   }
 
   static async Login(req, res) {
-    res.status(200)
+    res.json({dados: req.user})
   }
   
   static async postUser(req, res) {
@@ -47,5 +47,8 @@ class User {
     }
   }
 }
+
+
+
 
 export default User;

@@ -46,3 +46,8 @@ export async function LogarUser(user) {
     console.error(error);
   }
 }
+
+export async function PostNotify(notify) {
+  const response = axios.post("http://localhost:3000/postNotify", notify)
+  return response
+}

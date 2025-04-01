@@ -8,7 +8,6 @@ async function ValidaToken(req, res, next) {
       .find((row) => row.startsWith("token="))
       ?.split("=")[1];
 
-     console.log(req.headers)
     if (!token) {
       return res.status(401).json({ message: "Token não encontrado" });
     }
